@@ -1,0 +1,23 @@
+丸く表れるフォーム
+
+    using System.Drawing.Drawing2D;
+
+        private int radius { get; set; }
+        private int ox { get; set; }
+        private int oy { get; set; }
+        
+        Animator.ControlAnimation(300, (frame, frequency) =>
+        {
+
+            var resolution = frequency;
+            if (!Visible || IsDisposed) return false;
+            var graphicsPath = new GraphicsPath();
+            var r = radius * frame / resolution;
+            graphicsPath.AddEllipse(new Rectangle(ox - r, oy - r, r * 2, r * 2));
+            Region = new Region(graphicsPath);
+            if (frame == resolution) Region = null;
+            return true;
+        });
+        
+        
+        
