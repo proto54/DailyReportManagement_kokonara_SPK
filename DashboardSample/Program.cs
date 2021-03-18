@@ -14,6 +14,9 @@ namespace DashboardSample
         [STAThread]
         static void Main()
         {
+            // DBアクセスの初期化
+            DBControlLibrary.DataServiceFacade.Instance.Initialize();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new FormDashBoardSample1());

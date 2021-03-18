@@ -254,7 +254,7 @@ namespace DashboardSample
             //
             // ユーザーコードをここに書く
             //
-            OpenChileForm(new ChildFormSample2());
+            OpenChileForm(new ChildFormFixedTimeEditor());
             ActivateButton(sender);
         }
 

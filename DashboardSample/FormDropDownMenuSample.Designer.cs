@@ -36,6 +36,7 @@
             this.panelSideMenu = new System.Windows.Forms.Panel();
             this.btnMenu5 = new System.Windows.Forms.Button();
             this.panelSubMenu4 = new System.Windows.Forms.Panel();
+            this.panelSubMenuActiveBar4 = new System.Windows.Forms.Panel();
             this.btnMenu4SubMenu4 = new System.Windows.Forms.Button();
             this.btnMenu4SubMenu3 = new System.Windows.Forms.Button();
             this.btnMenu4SubMenu2 = new System.Windows.Forms.Button();
@@ -59,7 +60,6 @@
             this.panelSideMenuTop = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelChildForm = new System.Windows.Forms.Panel();
-            this.panelSubMenuActiveBar4 = new System.Windows.Forms.Panel();
             this.panelTitleBar.SuspendLayout();
             this.panelSideMenu.SuspendLayout();
             this.panelSubMenu4.SuspendLayout();
@@ -153,10 +153,10 @@
             this.panelSideMenu.Controls.Add(this.panelSideMenuTop);
             this.panelSideMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelSideMenu.Location = new System.Drawing.Point(0, 35);
-            this.panelSideMenu.MaximumSize = new System.Drawing.Size(220, 0);
+            this.panelSideMenu.MaximumSize = new System.Drawing.Size(240, 0);
             this.panelSideMenu.MinimumSize = new System.Drawing.Size(70, 0);
             this.panelSideMenu.Name = "panelSideMenu";
-            this.panelSideMenu.Size = new System.Drawing.Size(220, 849);
+            this.panelSideMenu.Size = new System.Drawing.Size(240, 849);
             this.panelSideMenu.TabIndex = 2;
             // 
             // btnMenu5
@@ -173,7 +173,7 @@
             this.btnMenu5.Margin = new System.Windows.Forms.Padding(0);
             this.btnMenu5.Name = "btnMenu5";
             this.btnMenu5.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.btnMenu5.Size = new System.Drawing.Size(220, 50);
+            this.btnMenu5.Size = new System.Drawing.Size(240, 50);
             this.btnMenu5.TabIndex = 8;
             this.btnMenu5.Text = "          Menu5";
             this.btnMenu5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -190,8 +190,17 @@
             this.panelSubMenu4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSubMenu4.Location = new System.Drawing.Point(0, 576);
             this.panelSubMenu4.Name = "panelSubMenu4";
-            this.panelSubMenu4.Size = new System.Drawing.Size(220, 163);
+            this.panelSubMenu4.Size = new System.Drawing.Size(240, 163);
             this.panelSubMenu4.TabIndex = 7;
+            // 
+            // panelSubMenuActiveBar4
+            // 
+            this.panelSubMenuActiveBar4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelSubMenuActiveBar4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(66)))), ((int)(((byte)(50)))));
+            this.panelSubMenuActiveBar4.Location = new System.Drawing.Point(232, 0);
+            this.panelSubMenuActiveBar4.Name = "panelSubMenuActiveBar4";
+            this.panelSubMenuActiveBar4.Size = new System.Drawing.Size(8, 40);
+            this.panelSubMenuActiveBar4.TabIndex = 5;
             // 
             // btnMenu4SubMenu4
             // 
@@ -206,7 +215,7 @@
             this.btnMenu4SubMenu4.Margin = new System.Windows.Forms.Padding(0);
             this.btnMenu4SubMenu4.Name = "btnMenu4SubMenu4";
             this.btnMenu4SubMenu4.Padding = new System.Windows.Forms.Padding(65, 0, 0, 0);
-            this.btnMenu4SubMenu4.Size = new System.Drawing.Size(220, 40);
+            this.btnMenu4SubMenu4.Size = new System.Drawing.Size(240, 40);
             this.btnMenu4SubMenu4.TabIndex = 3;
             this.btnMenu4SubMenu4.Text = "SubMenu4";
             this.btnMenu4SubMenu4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -226,7 +235,7 @@
             this.btnMenu4SubMenu3.Margin = new System.Windows.Forms.Padding(0);
             this.btnMenu4SubMenu3.Name = "btnMenu4SubMenu3";
             this.btnMenu4SubMenu3.Padding = new System.Windows.Forms.Padding(65, 0, 0, 0);
-            this.btnMenu4SubMenu3.Size = new System.Drawing.Size(220, 40);
+            this.btnMenu4SubMenu3.Size = new System.Drawing.Size(240, 40);
             this.btnMenu4SubMenu3.TabIndex = 2;
             this.btnMenu4SubMenu3.Text = "SubMenu3";
             this.btnMenu4SubMenu3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -246,7 +255,7 @@
             this.btnMenu4SubMenu2.Margin = new System.Windows.Forms.Padding(0);
             this.btnMenu4SubMenu2.Name = "btnMenu4SubMenu2";
             this.btnMenu4SubMenu2.Padding = new System.Windows.Forms.Padding(65, 0, 0, 0);
-            this.btnMenu4SubMenu2.Size = new System.Drawing.Size(220, 40);
+            this.btnMenu4SubMenu2.Size = new System.Drawing.Size(240, 40);
             this.btnMenu4SubMenu2.TabIndex = 1;
             this.btnMenu4SubMenu2.Text = "SubMenu2";
             this.btnMenu4SubMenu2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -266,7 +275,7 @@
             this.btnMenu4SubMenu1.Margin = new System.Windows.Forms.Padding(0);
             this.btnMenu4SubMenu1.Name = "btnMenu4SubMenu1";
             this.btnMenu4SubMenu1.Padding = new System.Windows.Forms.Padding(65, 0, 0, 0);
-            this.btnMenu4SubMenu1.Size = new System.Drawing.Size(220, 40);
+            this.btnMenu4SubMenu1.Size = new System.Drawing.Size(240, 40);
             this.btnMenu4SubMenu1.TabIndex = 0;
             this.btnMenu4SubMenu1.Text = "SubMenu1";
             this.btnMenu4SubMenu1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -287,7 +296,7 @@
             this.btnMenu4.Margin = new System.Windows.Forms.Padding(0);
             this.btnMenu4.Name = "btnMenu4";
             this.btnMenu4.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.btnMenu4.Size = new System.Drawing.Size(220, 50);
+            this.btnMenu4.Size = new System.Drawing.Size(240, 50);
             this.btnMenu4.TabIndex = 6;
             this.btnMenu4.Text = "          Menu4";
             this.btnMenu4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -305,14 +314,14 @@
             this.panelSubMenu3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSubMenu3.Location = new System.Drawing.Point(0, 363);
             this.panelSubMenu3.Name = "panelSubMenu3";
-            this.panelSubMenu3.Size = new System.Drawing.Size(220, 163);
+            this.panelSubMenu3.Size = new System.Drawing.Size(240, 163);
             this.panelSubMenu3.TabIndex = 5;
             // 
             // panelSubMenuActiveBar3
             // 
             this.panelSubMenuActiveBar3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelSubMenuActiveBar3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(66)))), ((int)(((byte)(50)))));
-            this.panelSubMenuActiveBar3.Location = new System.Drawing.Point(212, 0);
+            this.panelSubMenuActiveBar3.Location = new System.Drawing.Point(232, 0);
             this.panelSubMenuActiveBar3.Name = "panelSubMenuActiveBar3";
             this.panelSubMenuActiveBar3.Size = new System.Drawing.Size(8, 40);
             this.panelSubMenuActiveBar3.TabIndex = 4;
@@ -330,7 +339,7 @@
             this.btnMenu3SubMenu4.Margin = new System.Windows.Forms.Padding(0);
             this.btnMenu3SubMenu4.Name = "btnMenu3SubMenu4";
             this.btnMenu3SubMenu4.Padding = new System.Windows.Forms.Padding(65, 0, 0, 0);
-            this.btnMenu3SubMenu4.Size = new System.Drawing.Size(220, 40);
+            this.btnMenu3SubMenu4.Size = new System.Drawing.Size(240, 40);
             this.btnMenu3SubMenu4.TabIndex = 3;
             this.btnMenu3SubMenu4.Text = "SubMenu4";
             this.btnMenu3SubMenu4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -350,7 +359,7 @@
             this.btnMenu3SubMenu3.Margin = new System.Windows.Forms.Padding(0);
             this.btnMenu3SubMenu3.Name = "btnMenu3SubMenu3";
             this.btnMenu3SubMenu3.Padding = new System.Windows.Forms.Padding(65, 0, 0, 0);
-            this.btnMenu3SubMenu3.Size = new System.Drawing.Size(220, 40);
+            this.btnMenu3SubMenu3.Size = new System.Drawing.Size(240, 40);
             this.btnMenu3SubMenu3.TabIndex = 2;
             this.btnMenu3SubMenu3.Text = "SubMenu3";
             this.btnMenu3SubMenu3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -370,9 +379,9 @@
             this.btnMenu3SubMenu2.Margin = new System.Windows.Forms.Padding(0);
             this.btnMenu3SubMenu2.Name = "btnMenu3SubMenu2";
             this.btnMenu3SubMenu2.Padding = new System.Windows.Forms.Padding(65, 0, 0, 0);
-            this.btnMenu3SubMenu2.Size = new System.Drawing.Size(220, 40);
+            this.btnMenu3SubMenu2.Size = new System.Drawing.Size(240, 40);
             this.btnMenu3SubMenu2.TabIndex = 1;
-            this.btnMenu3SubMenu2.Text = "SubMenu2";
+            this.btnMenu3SubMenu2.Text = "作業者所属編集";
             this.btnMenu3SubMenu2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMenu3SubMenu2.UseVisualStyleBackColor = true;
             this.btnMenu3SubMenu2.Click += new System.EventHandler(this.btnMenu3SubMenu2_Click);
@@ -390,9 +399,9 @@
             this.btnMenu3SubMenu1.Margin = new System.Windows.Forms.Padding(0);
             this.btnMenu3SubMenu1.Name = "btnMenu3SubMenu1";
             this.btnMenu3SubMenu1.Padding = new System.Windows.Forms.Padding(65, 0, 0, 0);
-            this.btnMenu3SubMenu1.Size = new System.Drawing.Size(220, 40);
+            this.btnMenu3SubMenu1.Size = new System.Drawing.Size(240, 40);
             this.btnMenu3SubMenu1.TabIndex = 0;
-            this.btnMenu3SubMenu1.Text = "SubMenu1";
+            this.btnMenu3SubMenu1.Text = "固定時間編集";
             this.btnMenu3SubMenu1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMenu3SubMenu1.UseVisualStyleBackColor = true;
             this.btnMenu3SubMenu1.Click += new System.EventHandler(this.btnMenu3SubMenu1_Click);
@@ -411,9 +420,9 @@
             this.btnMenu3.Margin = new System.Windows.Forms.Padding(0);
             this.btnMenu3.Name = "btnMenu3";
             this.btnMenu3.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.btnMenu3.Size = new System.Drawing.Size(220, 50);
+            this.btnMenu3.Size = new System.Drawing.Size(240, 50);
             this.btnMenu3.TabIndex = 4;
-            this.btnMenu3.Text = "          Menu3";
+            this.btnMenu3.Text = "          管理者";
             this.btnMenu3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMenu3.UseVisualStyleBackColor = true;
             this.btnMenu3.Click += new System.EventHandler(this.btnMenu3_Click);
@@ -432,7 +441,7 @@
             this.btnMenu2.Margin = new System.Windows.Forms.Padding(0);
             this.btnMenu2.Name = "btnMenu2";
             this.btnMenu2.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.btnMenu2.Size = new System.Drawing.Size(220, 50);
+            this.btnMenu2.Size = new System.Drawing.Size(240, 50);
             this.btnMenu2.TabIndex = 3;
             this.btnMenu2.Text = "          Menu2";
             this.btnMenu2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -450,14 +459,14 @@
             this.panelSubMenu1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSubMenu1.Location = new System.Drawing.Point(0, 100);
             this.panelSubMenu1.Name = "panelSubMenu1";
-            this.panelSubMenu1.Size = new System.Drawing.Size(220, 163);
+            this.panelSubMenu1.Size = new System.Drawing.Size(240, 163);
             this.panelSubMenu1.TabIndex = 2;
             // 
             // panelSubMenuActiveBar1
             // 
             this.panelSubMenuActiveBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelSubMenuActiveBar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(66)))), ((int)(((byte)(50)))));
-            this.panelSubMenuActiveBar1.Location = new System.Drawing.Point(212, 0);
+            this.panelSubMenuActiveBar1.Location = new System.Drawing.Point(232, 0);
             this.panelSubMenuActiveBar1.Name = "panelSubMenuActiveBar1";
             this.panelSubMenuActiveBar1.Size = new System.Drawing.Size(8, 40);
             this.panelSubMenuActiveBar1.TabIndex = 4;
@@ -475,7 +484,7 @@
             this.btnMenu1SubMenu4.Margin = new System.Windows.Forms.Padding(0);
             this.btnMenu1SubMenu4.Name = "btnMenu1SubMenu4";
             this.btnMenu1SubMenu4.Padding = new System.Windows.Forms.Padding(65, 0, 0, 0);
-            this.btnMenu1SubMenu4.Size = new System.Drawing.Size(220, 40);
+            this.btnMenu1SubMenu4.Size = new System.Drawing.Size(240, 40);
             this.btnMenu1SubMenu4.TabIndex = 3;
             this.btnMenu1SubMenu4.Text = "SubMenu4";
             this.btnMenu1SubMenu4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -495,7 +504,7 @@
             this.btnMenu1SubMenu3.Margin = new System.Windows.Forms.Padding(0);
             this.btnMenu1SubMenu3.Name = "btnMenu1SubMenu3";
             this.btnMenu1SubMenu3.Padding = new System.Windows.Forms.Padding(65, 0, 0, 0);
-            this.btnMenu1SubMenu3.Size = new System.Drawing.Size(220, 40);
+            this.btnMenu1SubMenu3.Size = new System.Drawing.Size(240, 40);
             this.btnMenu1SubMenu3.TabIndex = 2;
             this.btnMenu1SubMenu3.Text = "SubMenu3";
             this.btnMenu1SubMenu3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -515,7 +524,7 @@
             this.btnMenu1SubMenu2.Margin = new System.Windows.Forms.Padding(0);
             this.btnMenu1SubMenu2.Name = "btnMenu1SubMenu2";
             this.btnMenu1SubMenu2.Padding = new System.Windows.Forms.Padding(65, 0, 0, 0);
-            this.btnMenu1SubMenu2.Size = new System.Drawing.Size(220, 40);
+            this.btnMenu1SubMenu2.Size = new System.Drawing.Size(240, 40);
             this.btnMenu1SubMenu2.TabIndex = 1;
             this.btnMenu1SubMenu2.Text = "SubMenu2";
             this.btnMenu1SubMenu2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -535,7 +544,7 @@
             this.btnMenu1SubMenu1.Margin = new System.Windows.Forms.Padding(0);
             this.btnMenu1SubMenu1.Name = "btnMenu1SubMenu1";
             this.btnMenu1SubMenu1.Padding = new System.Windows.Forms.Padding(65, 0, 0, 0);
-            this.btnMenu1SubMenu1.Size = new System.Drawing.Size(220, 40);
+            this.btnMenu1SubMenu1.Size = new System.Drawing.Size(240, 40);
             this.btnMenu1SubMenu1.TabIndex = 0;
             this.btnMenu1SubMenu1.Text = "SubMenu1";
             this.btnMenu1SubMenu1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -556,7 +565,7 @@
             this.btnMenu1.Margin = new System.Windows.Forms.Padding(0);
             this.btnMenu1.Name = "btnMenu1";
             this.btnMenu1.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.btnMenu1.Size = new System.Drawing.Size(220, 50);
+            this.btnMenu1.Size = new System.Drawing.Size(240, 50);
             this.btnMenu1.TabIndex = 1;
             this.btnMenu1.Text = "          Menu1";
             this.btnMenu1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -568,35 +577,26 @@
             this.panelSideMenuTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSideMenuTop.Location = new System.Drawing.Point(0, 0);
             this.panelSideMenuTop.Name = "panelSideMenuTop";
-            this.panelSideMenuTop.Size = new System.Drawing.Size(220, 50);
+            this.panelSideMenuTop.Size = new System.Drawing.Size(240, 50);
             this.panelSideMenuTop.TabIndex = 0;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(61)))), ((int)(((byte)(82)))));
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(220, 834);
+            this.panel1.Location = new System.Drawing.Point(240, 834);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1044, 50);
+            this.panel1.Size = new System.Drawing.Size(1024, 50);
             this.panel1.TabIndex = 2;
             // 
             // panelChildForm
             // 
             this.panelChildForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(53)))), ((int)(((byte)(71)))));
             this.panelChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelChildForm.Location = new System.Drawing.Point(220, 35);
+            this.panelChildForm.Location = new System.Drawing.Point(240, 35);
             this.panelChildForm.Name = "panelChildForm";
-            this.panelChildForm.Size = new System.Drawing.Size(1044, 799);
+            this.panelChildForm.Size = new System.Drawing.Size(1024, 799);
             this.panelChildForm.TabIndex = 0;
-            // 
-            // panelSubMenuActiveBar4
-            // 
-            this.panelSubMenuActiveBar4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelSubMenuActiveBar4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(66)))), ((int)(((byte)(50)))));
-            this.panelSubMenuActiveBar4.Location = new System.Drawing.Point(212, 0);
-            this.panelSubMenuActiveBar4.Name = "panelSubMenuActiveBar4";
-            this.panelSubMenuActiveBar4.Size = new System.Drawing.Size(8, 40);
-            this.panelSubMenuActiveBar4.TabIndex = 5;
             // 
             // FormDropDownMenuSample
             // 

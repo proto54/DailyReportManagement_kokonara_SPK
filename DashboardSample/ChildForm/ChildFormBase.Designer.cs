@@ -83,7 +83,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(53)))), ((int)(((byte)(71)))));
             this.ClientSize = new System.Drawing.Size(1064, 661);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.Font = new System.Drawing.Font("メイリオ", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimumSize = new System.Drawing.Size(564, 399);
@@ -96,9 +96,8 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnClose;
         protected System.Windows.Forms.Label lblTitle;
         protected System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        protected internal System.Windows.Forms.Button btnClose;
     }
 }

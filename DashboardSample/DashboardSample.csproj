@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>DashboardSample</RootNamespace>
     <AssemblyName>DashboardSample</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -57,6 +57,12 @@
     <Compile Include="ChildForm\ChildFormBase.Designer.cs">
       <DependentUpon>ChildFormBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChildForm\ChildFormFixedTimeEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChildForm\ChildFormFixedTimeEditor.Designer.cs">
+      <DependentUpon>ChildFormFixedTimeEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="ChildForm\ChildFormSample1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,8 +96,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\Animator.cs" />
+    <Compile Include="Utility\SortableBindingList.cs" />
     <EmbeddedResource Include="ChildForm\ChildFormBase.resx">
       <DependentUpon>ChildFormBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChildForm\ChildFormFixedTimeEditor.resx">
+      <DependentUpon>ChildFormFixedTimeEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ChildForm\ChildFormSample1.resx">
       <DependentUpon>ChildFormSample1.cs</DependentUpon>
@@ -118,6 +128,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Properties\DataSources\DailyReportModels.Models.FixedTimeModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -148,6 +159,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8_increase_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DailyReportModels\DailyReportModels.csproj">
+      <Project>{1f26163d-bfd8-4c9d-95ca-cabf87b28e25}</Project>
+      <Name>DailyReportModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBControlLibrary\DBControlLibrary.csproj">
+      <Project>{38ddb1f9-2608-426d-bd5f-230629c5679c}</Project>
+      <Name>DBControlLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="EntityFramework">
+      <Version>6.4.4</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
