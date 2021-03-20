@@ -36,6 +36,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -75,6 +76,9 @@
     <Compile Include="ChildForm\ChildFormSample2.Designer.cs">
       <DependentUpon>ChildFormSample2.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExControls\TextBoxEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="FormDragAndResizeSample.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +100,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\Animator.cs" />
+    <Compile Include="Utility\ObjectHelper.cs" />
     <Compile Include="Utility\SortableBindingList.cs" />
     <EmbeddedResource Include="ChildForm\ChildFormBase.resx">
       <DependentUpon>ChildFormBase.cs</DependentUpon>
@@ -175,5 +180,6 @@
       <Version>6.4.4</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
