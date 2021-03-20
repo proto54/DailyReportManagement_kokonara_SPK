@@ -254,6 +254,7 @@ namespace DashboardSample
             //
             // ユーザーコードをここに書く
             //
+            // 固定時間編集画面表示
             OpenChileForm(new ChildFormFixedTimeEditor());
             ActivateButton(sender);
         }
@@ -272,7 +273,10 @@ namespace DashboardSample
             //
             // ユーザーコードをここに書く
             //
-            OpenChileForm(null);
+            // 固定時間編集画面を別ウィンドウで表示
+            var form = new ChildFormFixedTimeEditor() { Text = "固定時間編集", FormBorderStyle = FormBorderStyle.FixedSingle };
+            form.ShowDialog();
+            //OpenChileForm(null);
             ActivateButton(sender);
         }
 

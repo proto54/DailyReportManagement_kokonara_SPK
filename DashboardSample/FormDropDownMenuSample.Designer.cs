@@ -361,7 +361,7 @@
             this.btnMenu3SubMenu3.Padding = new System.Windows.Forms.Padding(65, 0, 0, 0);
             this.btnMenu3SubMenu3.Size = new System.Drawing.Size(240, 40);
             this.btnMenu3SubMenu3.TabIndex = 2;
-            this.btnMenu3SubMenu3.Text = "SubMenu3";
+            this.btnMenu3SubMenu3.Text = "固定時間(popup)";
             this.btnMenu3SubMenu3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMenu3SubMenu3.UseVisualStyleBackColor = true;
             this.btnMenu3SubMenu3.Click += new System.EventHandler(this.btnMenu3SubMenu3_Click);
