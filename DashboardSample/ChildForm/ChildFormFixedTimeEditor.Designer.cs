@@ -30,16 +30,19 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtFixedNumber = new DashboardSample.ExControls.TextBoxEx();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtFixedTimeValue = new DashboardSample.ExControls.TextBoxEx();
+            this.txtName = new DashboardSample.ExControls.TextBoxEx();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +50,7 @@
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fixedNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fixedTimeModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnImport = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -76,6 +80,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.btnImport);
             this.splitContainer1.Panel2.Controls.Add(this.btnDelete);
             this.splitContainer1.Panel2.Controls.Add(this.btnUpdate);
             this.splitContainer1.Panel2.Controls.Add(this.btnAdd);
@@ -112,11 +117,11 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
-            this.tableLayoutPanel2.Controls.Add(this.textBox3, 6, 0);
+            this.tableLayoutPanel2.Controls.Add(this.txtFixedNumber, 6, 0);
             this.tableLayoutPanel2.Controls.Add(this.label3, 5, 0);
             this.tableLayoutPanel2.Controls.Add(this.label1, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.textBox1, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.textBox2, 4, 0);
+            this.tableLayoutPanel2.Controls.Add(this.txtFixedTimeValue, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.txtName, 4, 0);
             this.tableLayoutPanel2.Controls.Add(this.label2, 3, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
@@ -126,15 +131,20 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(890, 70);
             this.tableLayoutPanel2.TabIndex = 7;
             // 
-            // textBox3
+            // txtFixedNumber
             // 
-            this.textBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox3.Location = new System.Drawing.Point(828, 13);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(59, 43);
-            this.textBox3.TabIndex = 5;
-            this.textBox3.Text = "30";
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtFixedNumber.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtFixedNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtFixedNumber.CustomActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtFixedNumber.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txtFixedNumber.CustomNoneActiveColor = System.Drawing.Color.Empty;
+            this.txtFixedNumber.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txtFixedNumber.Location = new System.Drawing.Point(828, 13);
+            this.txtFixedNumber.Name = "txtFixedNumber";
+            this.txtFixedNumber.Size = new System.Drawing.Size(59, 43);
+            this.txtFixedNumber.TabIndex = 5;
+            this.txtFixedNumber.Text = "30";
+            this.txtFixedNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label3
             // 
@@ -156,23 +166,32 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "固定時間";
             // 
-            // textBox1
+            // txtFixedTimeValue
             // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox1.Location = new System.Drawing.Point(128, 13);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(59, 43);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "30";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtFixedTimeValue.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtFixedTimeValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtFixedTimeValue.CustomActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtFixedTimeValue.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txtFixedTimeValue.CustomNoneActiveColor = System.Drawing.Color.Empty;
+            this.txtFixedTimeValue.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txtFixedTimeValue.Location = new System.Drawing.Point(128, 13);
+            this.txtFixedTimeValue.Name = "txtFixedTimeValue";
+            this.txtFixedTimeValue.Size = new System.Drawing.Size(59, 43);
+            this.txtFixedTimeValue.TabIndex = 1;
+            this.txtFixedTimeValue.Text = "30";
+            this.txtFixedTimeValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // textBox2
+            // txtName
             // 
-            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox2.Location = new System.Drawing.Point(267, 13);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(430, 43);
-            this.textBox2.TabIndex = 3;
+            this.txtName.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtName.CustomActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtName.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txtName.CustomNoneActiveColor = System.Drawing.Color.Empty;
+            this.txtName.Location = new System.Drawing.Point(267, 13);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(430, 43);
+            this.txtName.TabIndex = 3;
             // 
             // label2
             // 
@@ -207,53 +226,74 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("メイリオ", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView1.RowTemplate.Height = 21;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("メイリオ", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            this.dataGridView1.RowTemplate.Height = 30;
             this.dataGridView1.Size = new System.Drawing.Size(890, 656);
             this.dataGridView1.TabIndex = 0;
             // 
             // idDataGridViewTextBoxColumn
             // 
-            this.idDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.idDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.idDataGridViewTextBoxColumn.FillWeight = 80F;
             this.idDataGridViewTextBoxColumn.HeaderText = "Id";
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.Width = 80;
             // 
             // fixedTimeValueDataGridViewTextBoxColumn
             // 
             this.fixedTimeValueDataGridViewTextBoxColumn.DataPropertyName = "FixedTimeValue";
-            this.fixedTimeValueDataGridViewTextBoxColumn.FillWeight = 65.65144F;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.fixedTimeValueDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.fixedTimeValueDataGridViewTextBoxColumn.HeaderText = "固定時間";
             this.fixedTimeValueDataGridViewTextBoxColumn.Name = "fixedTimeValueDataGridViewTextBoxColumn";
             // 
             // nameDataGridViewTextBoxColumn
             // 
+            this.nameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.FillWeight = 65.65144F;
+            this.nameDataGridViewTextBoxColumn.FillWeight = 300F;
             this.nameDataGridViewTextBoxColumn.HeaderText = "名称";
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
             // 
             // fixedNumberDataGridViewTextBoxColumn
             // 
             this.fixedNumberDataGridViewTextBoxColumn.DataPropertyName = "FixedNumber";
-            this.fixedNumberDataGridViewTextBoxColumn.FillWeight = 65.65144F;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.fixedNumberDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.fixedNumberDataGridViewTextBoxColumn.HeaderText = "固定番号";
             this.fixedNumberDataGridViewTextBoxColumn.Name = "fixedNumberDataGridViewTextBoxColumn";
             // 
             // fixedTimeModelBindingSource
             // 
             this.fixedTimeModelBindingSource.DataSource = typeof(DailyReportModels.Models.FixedTimeModel);
+            // 
+            // btnImport
+            // 
+            this.btnImport.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImport.FlatAppearance.BorderSize = 0;
+            this.btnImport.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(66)))), ((int)(((byte)(50)))));
+            this.btnImport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(29)))), ((int)(((byte)(43)))));
+            this.btnImport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImport.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btnImport.Location = new System.Drawing.Point(1, 464);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(105, 40);
+            this.btnImport.TabIndex = 6;
+            this.btnImport.Text = "インポート";
+            this.btnImport.UseVisualStyleBackColor = true;
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
             // btnDelete
             // 
@@ -264,7 +304,7 @@
             this.btnDelete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(29)))), ((int)(((byte)(43)))));
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btnDelete.Location = new System.Drawing.Point(1, 251);
+            this.btnDelete.Location = new System.Drawing.Point(1, 314);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(105, 40);
             this.btnDelete.TabIndex = 3;
@@ -281,7 +321,7 @@
             this.btnUpdate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(29)))), ((int)(((byte)(43)))));
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btnUpdate.Location = new System.Drawing.Point(-2, 147);
+            this.btnUpdate.Location = new System.Drawing.Point(1, 164);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(105, 40);
             this.btnUpdate.TabIndex = 4;
@@ -342,14 +382,15 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
+        private ExControls.TextBoxEx txtFixedTimeValue;
+        private ExControls.TextBoxEx txtName;
+        private ExControls.TextBoxEx txtFixedNumber;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.BindingSource fixedTimeModelBindingSource;
+        private System.Windows.Forms.Button btnImport;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fixedTimeValueDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;

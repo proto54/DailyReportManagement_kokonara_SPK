@@ -12,7 +12,7 @@ namespace DBControlLibrary.Entities
     public sealed class FixedTimeEntitie
     {
         /// <summary>
-        /// ID
+        /// ID(自動割り当て)
         /// </summary>
         public int Id { set; get; }
 

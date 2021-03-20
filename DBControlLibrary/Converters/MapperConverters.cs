@@ -28,6 +28,7 @@ namespace DBControlLibrary.Converters
                             FixedNumber = data.FixedNumber
                         };
         }
+
         /// <summary>
         /// 固定時間のエンティティオブジェクトを 固定時間のデータオブジェクトをに変換する機能を提供します。
         /// </summary>

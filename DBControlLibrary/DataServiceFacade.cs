@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Reflection;
 using System.Threading.Tasks;
 using DailyReportModels.Models;
 using DBControlLibrary.Entities;
@@ -66,25 +67,6 @@ namespace DBControlLibrary
         /// <summary>
         /// 固定時間 データを DB に登録します。
         /// </summary>
-        /// <param name="datas"></param>
-        public void AddFixedTimeData(IEnumerable<FixedTimeModel> datas)
-        {
-            this.ThrowIfUnInitialized();
-
-            try
-            {
-                Lock(() => _ContextFixedTime.Add(datas.ToFixedTimeEntitie()));
-            }
-            catch (Exception ex)
-            {
-                this.WriteLog(System.Reflection.MethodBase.GetCurrentMethod(), ex.Message);
-                throw;
-            }
-        }
-
-        /// <summary>
-        /// 固定時間 データを DB に登録します。
-        /// </summary>
         /// <param name="data"></param>
         public void AddFixedTimeData(FixedTimeModel data)
         {
@@ -96,7 +78,30 @@ namespace DBControlLibrary
             }
             catch (Exception ex)
             {
-                this.WriteLog(System.Reflection.MethodBase.GetCurrentMethod(), ex.Message);
+                this.WriteLog(MethodBase.GetCurrentMethod(), ex.Message);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 固定時間 データを DB に登録します。
+        /// </summary>
+        /// <param name="datas"></param>
+        public void AddFixedTimeData(IEnumerable<FixedTimeModel> datas)
+        {
+            this.ThrowIfUnInitialized();
+
+            try
+            {
+                int ret = 0;
+                Lock(() => ret = _ContextFixedTime.Add(datas.ToFixedTimeEntitie()));
+
+                var msg = String.Format("{0}を{1}件追加しました。", nameof(FixedTimeModel), ret);
+                this.WriteLog(MethodBase.GetCurrentMethod(), msg);
+            }
+            catch (Exception ex)
+            {
+                this.WriteLog(MethodBase.GetCurrentMethod(), ex.Message);
                 throw;
             }
         }
@@ -114,11 +119,38 @@ namespace DBControlLibrary
 
             try
             {
-                
+                int ret = 0;
+                Lock(() => _ContextFixedTime.Update(data.ToFixedTimeEntitie()));
+
+                var msg = String.Format("{0}を{1}件更新しました。", nameof(FixedTimeModel), ret);
+                this.WriteLog(MethodBase.GetCurrentMethod(), msg);
             }
             catch (Exception ex)
             {
-                this.WriteLog(System.Reflection.MethodBase.GetCurrentMethod(), ex.Message);
+                this.WriteLog(MethodBase.GetCurrentMethod(), ex.Message);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 固定時間 テーブルを更新します。
+        /// </summary>
+        /// <param name="data"></param>
+        public void UpdateFixedTimeData(IEnumerable<FixedTimeModel> datas)
+        {
+            this.ThrowIfUnInitialized();
+
+            try
+            {
+                int ret = 0;
+                Lock(() => ret = _ContextFixedTime.Update(datas.ToFixedTimeEntitie()));
+
+                var msg = String.Format("{0}を{1}件更新しました。", nameof(FixedTimeModel), ret);
+                this.WriteLog(MethodBase.GetCurrentMethod(), msg);
+            }
+            catch (Exception ex)
+            {
+                this.WriteLog(MethodBase.GetCurrentMethod(), ex.Message);
                 throw;
             }
         }
@@ -136,22 +168,13 @@ namespace DBControlLibrary
 
             try
             {
-                //using (var context = new FixedTimesDbContext())
-                //{
-                //    var result = context.FixedTimeEntities.ToList().ToFixedTimeModel();
-
-                //    //foreach (var x in result)
-                //    //{
-                //    //    Console.WriteLine("{0},{1},{2},{3}", x.Id, x.Name, x.FixedTimeValue, x.FixedNumber);
-                //    //}
-                //}
                 return _ContextFixedTime.GetAll()
                     .ToList()
                     .ToFixedTimeModel();
             }
             catch(Exception ex)
             {
-                this.WriteLog(System.Reflection.MethodBase.GetCurrentMethod(), ex.Message);
+                this.WriteLog(MethodBase.GetCurrentMethod(), ex.Message);
                 throw;
             }
         }
@@ -164,18 +187,23 @@ namespace DBControlLibrary
         public void RemoveFixedTime(int id)
         {
             this.ThrowIfUnInitialized();
-
             try
             {
+                int ret = 0;
+                Lock(() => ret = _ContextFixedTime.RemoveAt(id) );
+
+                var msg = String.Format("{0}を{1}件削除しました。", nameof(FixedTimeModel), ret);
+                this.WriteLog(MethodBase.GetCurrentMethod(), msg);
             }
             catch (Exception ex)
             {
-                this.WriteLog(System.Reflection.MethodBase.GetCurrentMethod(), ex.Message);
+                this.WriteLog(MethodBase.GetCurrentMethod(), ex.Message);
                 throw;
             }
         }
         #endregion "削除"
 
+        #region "Lock"
         /// <summary>
         /// ロックを囲って処理を制御します。
         /// </summary>
@@ -196,6 +224,7 @@ namespace DBControlLibrary
                 }
             }
         }
+        #endregion "Lock"
 
         /// <summary>
         /// 初期化済みをチェックします。
@@ -205,15 +234,10 @@ namespace DBControlLibrary
             if (this.IsInitialized == false) throw new Exception(nameof(DataServiceFacade) + " 未初期化");
         }
 
-        private void WriteLog(System.Reflection.MethodBase methodBase, string msg)
+        private void WriteLog(MethodBase methodBase, string msg)
         {
             var outMsg = String.Format("{0},{1},{2}(),{3},{4}", DateTime.Now.ToString("HH:mm:ss.fff"), methodBase.DeclaringType.FullName, methodBase.Name, Log_Key, msg);
             Console.WriteLine(outMsg);
         }
-        //private void WriteLog(string msg)
-        //{
-        //    var outMsg = String.Format("{0},,,{1}", DateTime.Now.ToString("HH:mm:ss.fff"), msg);
-        //    Console.WriteLine(outMsg);
-        //}
     }
 }

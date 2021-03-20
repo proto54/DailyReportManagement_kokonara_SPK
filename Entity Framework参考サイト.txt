@@ -1,0 +1,21 @@
+Docker で SQL Server を実行する
+https://www.curict.com/item/99/99ff31e.html
+
+[Entity Framework] コードファーストで、データベース・テーブル作成、データの書き込み・読み込みをしてみた。
+https://hokatsu.sakura.ne.jp/c-sharp/entity-framework-by-code-first/
+
+C# EntityFrameworkを使ったDBアクセス コードファースト編
+https://kitigai.hatenablog.com/entry/2018/01/11/001329
+
+Entity Framework Code First
+https://densan-labs.net/tech/codefirst/index.html
+
+生の SQL クエリ (EF6)
+https://docs.microsoft.com/ja-jp/ef/ef6/querying/raw-sql
+
+[Entity Framework] SQL を直接実行する
+https://fnya.cocolog-nifty.com/blog/2014/01/entity-frame-12.html#:~:text=Entity%20Framework%20%E3%81%A7%20SQL%20%E3%82%92%E7%9B%B4%E6%8E%A5%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95%E3%81%AF,%E3%83%97%E3%83%AD%E3%82%B7%E3%83%BC%E3%82%B8%E3%83%A3%E3%82%82%E5%AE%9F%E8%A1%8C%E5%8F%AF%E8%83%BD%E3%81%A7%E3%81%99%E3%80%82
+
+Entity Framework - パラメータを渡してSQLを実行する
+https://ichiroku11.hatenablog.jp/entry/2014/06/23/233249
+

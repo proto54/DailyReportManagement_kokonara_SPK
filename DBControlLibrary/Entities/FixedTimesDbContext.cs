@@ -30,7 +30,6 @@
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            //modelBuilder.HasDefaultSchema("public");
         }
 
         // モデルに含めるエンティティ型ごとに DbSet を追加します。Code First モデルの構成および使用の

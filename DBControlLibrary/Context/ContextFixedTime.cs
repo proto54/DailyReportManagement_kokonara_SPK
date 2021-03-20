@@ -8,6 +8,7 @@ using DBControlLibrary.Entities;
 
 namespace DBControlLibrary.Context
 {
+    using System.Data.Entity.Infrastructure;
     using Core;
 
     /// <summary>
@@ -45,16 +46,62 @@ namespace DBControlLibrary.Context
 
             using (var context = new FixedTimesDbContext())
             {
-                datas.ForEach(x =>
-                {
-                    context.FixedTimeEntities.Add(x);
-                });
+                context.FixedTimeEntities.AddRange(datas);
                 ret = context.SaveChanges();
             }
 
             return ret;
         }
 
+        /// <summary>
+        /// エンティティを更新します。
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public int Update(FixedTimeEntitie data)
+        {
+            int ret = 0;
+
+            using (var context = new FixedTimesDbContext())
+            {
+                var fixedTime = context.FixedTimeEntities.Single(x => x.Id == data.Id);
+                fixedTime.FixedTimeValue = data.FixedTimeValue;
+                fixedTime.Name = data.Name;
+                fixedTime.FixedNumber = data.FixedNumber;
+                
+                ret = context.SaveChanges();
+            }
+
+            return ret;
+        }
+
+        /// <summary>
+        /// エンティティを更新します。
+        /// </summary>
+        /// <param name="datas"></param>
+        /// <returns></returns>
+        public int Update(IEnumerable<FixedTimeEntitie> datas)
+        {
+            int ret = 0;
+
+            using (var context = new FixedTimesDbContext())
+            {
+                datas.ForEach(data =>
+                {
+                   var fixedTime = context.FixedTimeEntities.Single(x => x.Id == data.Id);
+                    if (fixedTime != null)
+                    {
+                        fixedTime.FixedTimeValue = data.FixedTimeValue;
+                        fixedTime.Name = data.Name;
+                        fixedTime.FixedNumber = data.FixedNumber;
+                    }
+
+                });
+                ret += context.SaveChanges();
+            }
+
+            return ret;
+        }
 
         /// <summary>
         /// エンティテイを全件取得します。
@@ -73,10 +120,9 @@ namespace DBControlLibrary.Context
         /// <returns></returns>
         public IEnumerable<FixedTimeEntitie> GetAll(bool isNoTracking)
         {
-            IEnumerable<FixedTimeEntitie> result;
+            IEnumerable<FixedTimeEntitie> result = null;
 
-            var context = new FixedTimesDbContext();
-            try
+            using (var context = new FixedTimesDbContext())
             {
                 if (isNoTracking)
                 {
@@ -89,15 +135,6 @@ namespace DBControlLibrary.Context
                     result = context.FixedTimeEntities
                         .ToList();
                 }
-
-                //foreach (var x in result)
-                //{
-                //    Console.WriteLine("{0},{1},{2},{3}", x.Id, x.Name, x.FixedTimeValue, x.FixedNumber);
-                //}
-            }
-            finally
-            {
-                context.Dispose();
             }
             return result;
         }
@@ -138,6 +175,45 @@ namespace DBControlLibrary.Context
                 var data = context.FixedTimeEntities.ToArray();
                 context.FixedTimeEntities.RemoveRange(data);
                 ret = context.SaveChanges();
+            }
+
+            return ret;
+        }
+
+        /// <summary>
+        /// SqlQueryを実行します。
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="sql"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public DbRawSqlQuery<T> SqlQuery<T>(string sql, object[] parameters)
+        {
+            var context = new FixedTimesDbContext();
+            try
+            {
+                return context.Database.SqlQuery<T>(sql, parameters);
+            }
+            finally
+            {
+                context.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// ExecuteSqlCommandを実行します。
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public int ExecuteSqlCommand(string sql, object[] parameters)
+        {
+            int ret = 0;
+
+            using (var context = new FixedTimesDbContext())
+            {
+
+                ret = context.Database.ExecuteSqlCommand(sql, parameters);
             }
 
             return ret;
