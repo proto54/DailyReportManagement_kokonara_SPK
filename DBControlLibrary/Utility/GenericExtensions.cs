@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DBControlLibrary.Core
+namespace DBControlLibrary.Utility
 {
     public static class GenericExtensions
     {

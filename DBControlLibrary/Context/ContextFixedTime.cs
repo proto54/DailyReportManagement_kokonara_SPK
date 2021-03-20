@@ -9,7 +9,7 @@ using DBControlLibrary.Entities;
 namespace DBControlLibrary.Context
 {
     using System.Data.Entity.Infrastructure;
-    using Core;
+    using Utility;
 
     /// <summary>
     /// Entity Frameworkを使った[固定時間]を操作する機能を提供します。

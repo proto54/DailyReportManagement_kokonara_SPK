@@ -49,7 +49,7 @@
   <ItemGroup>
     <Compile Include="Context\ContextFixedTime.cs" />
     <Compile Include="Converters\MapperConverters.cs" />
-    <Compile Include="Core\GenericExtensions.cs" />
+    <Compile Include="Utility\GenericExtensions.cs" />
     <Compile Include="DataServiceFacade.cs" />
     <Compile Include="Configuration\FixedTimeConfiguration.cs" />
     <Compile Include="Entities\FixedTimeEntitie.cs" />
