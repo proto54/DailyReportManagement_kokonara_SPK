@@ -1,0 +1,5 @@
+Dapperを使ったデータマッピングのはじめ方
+https://webbibouroku.com/Blog/Article/dapper#outline__3
+
+ Dapperを触ってみた(導入、簡単な操作編)(Micro-ORM)
+http://j-levia.hatenablog.jp/entry/2017/04/17/213921

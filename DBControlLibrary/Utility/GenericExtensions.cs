@@ -17,7 +17,9 @@ namespace DBControlLibrary.Utility
         public static void ForEach<T>(this IEnumerable<T> sequence, Action<T> action)
         {
             foreach (T item in sequence)
+            {
                 action(item);
+            }
         }
     }
 }

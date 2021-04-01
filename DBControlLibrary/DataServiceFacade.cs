@@ -8,19 +8,30 @@ using DailyReportModels.Models;
 using DBControlLibrary.Entities;
 using DBControlLibrary.Converters;
 using DBControlLibrary.Context;
+using System.Data.SqlClient;
 
 namespace DBControlLibrary
 {
     /// <summary>
     /// DBへのデータアクセスへの窓口を提供します
     /// </summary>
-    public class DataServiceFacade
+    public class DataServiceFacade : IDisposable
     {
-
         #region フィールド
         private readonly string Log_Key = "DG";
 
-        private ContextFixedTime _ContextFixedTime;
+        /// <summary>
+        /// データソースへの接続文字列を取得します。
+        /// </summary>
+        private string _ConnectionString = string.Empty;
+
+        /// <summary>
+        /// DBを操作するオブジェクトを保持します。
+        /// </summary>
+        private DapperMapper _Connection;
+
+        private SqlContextFixedTime _ContextFixedTime;
+        private EFContextFixedTime _EFContextFixedTime;
 
         /// <summary>
         /// 同期制御オブジェクト
@@ -53,14 +64,55 @@ namespace DBControlLibrary
         /// <summary>
         /// 初期化処理を実施します
         /// </summary>
-        public void Initialize()
+        public void Initialize(string connectionString)
         {
             if (this.IsInitialized) return;
 
-            // TODO:初期化
-            this._ContextFixedTime = new ContextFixedTime();
+            this._ConnectionString = connectionString;
+
+            // 接続クラスの初期化
+            var conection = new SqlConnection(this._ConnectionString);
+            _Connection = new DapperMapper(conection);
+
+            // 各インスタンスの初期化
+            this._ContextFixedTime = new SqlContextFixedTime(_Connection);
+            this._EFContextFixedTime = new EFContextFixedTime();
 
             this.IsInitialized = true;
+        }
+
+        /// <summary>
+        /// DBとの接続を開きます。
+        /// </summary>
+        public void Open()
+        {
+            this.ThrowIfUnInitialized();
+            try
+            {
+                _Connection.Open();
+            }
+            catch(Exception ex)
+            {
+                this.WriteLog(MethodBase.GetCurrentMethod(), ex.Message);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// DBとの接続を切断します。
+        /// </summary>
+        public void Close()
+        {
+            this.ThrowIfUnInitialized();
+            try
+            {
+                _Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                this.WriteLog(MethodBase.GetCurrentMethod(), ex.Message);
+                throw;
+            }
         }
 
         #region "追加"
@@ -74,7 +126,7 @@ namespace DBControlLibrary
 
             try
             {
-                Lock(() => _ContextFixedTime.Add(data.ToFixedTimeEntitie()));
+                Lock(() => _EFContextFixedTime.Add(data.ToFixedTimeEntitie()));
             }
             catch (Exception ex)
             {
@@ -94,7 +146,7 @@ namespace DBControlLibrary
             try
             {
                 int ret = 0;
-                Lock(() => ret = _ContextFixedTime.Add(datas.ToFixedTimeEntitie()));
+                Lock(() => ret = _EFContextFixedTime.Add(datas.ToFixedTimeEntitie()));
 
                 var msg = String.Format("{0}を{1}件追加しました。", nameof(FixedTimeModel), ret);
                 this.WriteLog(MethodBase.GetCurrentMethod(), msg);
@@ -120,7 +172,7 @@ namespace DBControlLibrary
             try
             {
                 int ret = 0;
-                Lock(() => _ContextFixedTime.Update(data.ToFixedTimeEntitie()));
+                Lock(() => _EFContextFixedTime.Update(data.ToFixedTimeEntitie()));
 
                 var msg = String.Format("{0}を{1}件更新しました。", nameof(FixedTimeModel), ret);
                 this.WriteLog(MethodBase.GetCurrentMethod(), msg);
@@ -143,7 +195,7 @@ namespace DBControlLibrary
             try
             {
                 int ret = 0;
-                Lock(() => ret = _ContextFixedTime.Update(datas.ToFixedTimeEntitie()));
+                Lock(() => ret = _EFContextFixedTime.Update(datas.ToFixedTimeEntitie()));
 
                 var msg = String.Format("{0}を{1}件更新しました。", nameof(FixedTimeModel), ret);
                 this.WriteLog(MethodBase.GetCurrentMethod(), msg);
@@ -168,6 +220,9 @@ namespace DBControlLibrary
 
             try
             {
+                this.Open();
+
+                //return _EFContextFixedTime.GetAll()
                 return _ContextFixedTime.GetAll()
                     .ToList()
                     .ToFixedTimeModel();
@@ -176,6 +231,10 @@ namespace DBControlLibrary
             {
                 this.WriteLog(MethodBase.GetCurrentMethod(), ex.Message);
                 throw;
+            }
+            finally
+            {
+                this.Close();
             }
         }
         #endregion "取得"
@@ -190,7 +249,7 @@ namespace DBControlLibrary
             try
             {
                 int ret = 0;
-                Lock(() => ret = _ContextFixedTime.RemoveAt(id) );
+                Lock(() => ret = _EFContextFixedTime.RemoveAt(id) );
 
                 var msg = String.Format("{0}を{1}件削除しました。", nameof(FixedTimeModel), ret);
                 this.WriteLog(MethodBase.GetCurrentMethod(), msg);
@@ -238,6 +297,11 @@ namespace DBControlLibrary
         {
             var outMsg = String.Format("{0},{1},{2}(),{3},{4}", DateTime.Now.ToString("HH:mm:ss.fff"), methodBase.DeclaringType.FullName, methodBase.Name, Log_Key, msg);
             Console.WriteLine(outMsg);
+        }
+
+        public void Dispose()
+        {
+            ((IDisposable)_Connection).Dispose();
         }
     }
 }

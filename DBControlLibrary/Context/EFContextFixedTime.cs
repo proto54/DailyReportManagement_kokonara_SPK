@@ -14,7 +14,7 @@ namespace DBControlLibrary.Context
     /// <summary>
     /// Entity Frameworkを使った[固定時間]を操作する機能を提供します。
     /// </summary>
-    public sealed class ContextFixedTime
+    public sealed class EFContextFixedTime
     {
         /// <summary>
         /// エンティテイを追加します

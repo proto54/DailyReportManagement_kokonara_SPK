@@ -47,8 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Context\ContextFixedTime.cs" />
+    <Compile Include="Context\EFContextFixedTime.cs" />
+    <Compile Include="Context\SqlContextFixedTime.cs" />
     <Compile Include="Converters\MapperConverters.cs" />
+    <Compile Include="Core\IDbMapper.cs" />
+    <Compile Include="Dapper\IDapper.cs" />
+    <Compile Include="DapperMapper.cs" />
     <Compile Include="Utility\GenericExtensions.cs" />
     <Compile Include="DataServiceFacade.cs" />
     <Compile Include="Configuration\FixedTimeConfiguration.cs" />
@@ -61,6 +65,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Dapper">
+      <Version>2.0.78</Version>
+    </PackageReference>
     <PackageReference Include="EntityFramework">
       <Version>6.4.4</Version>
     </PackageReference>
