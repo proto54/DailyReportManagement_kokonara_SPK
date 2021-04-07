@@ -47,7 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Context\EFContextFixedTime.cs" />
     <Compile Include="Context\SqlContextFixedTime.cs" />
     <Compile Include="Converters\MapperConverters.cs" />
     <Compile Include="Core\IDbMapper.cs" />
@@ -55,9 +54,7 @@
     <Compile Include="DapperMapper.cs" />
     <Compile Include="Utility\GenericExtensions.cs" />
     <Compile Include="DataServiceFacade.cs" />
-    <Compile Include="Configuration\FixedTimeConfiguration.cs" />
     <Compile Include="Entities\FixedTimeEntitie.cs" />
-    <Compile Include="Entities\FixedTimesDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
@@ -68,12 +65,6 @@
     <PackageReference Include="Dapper">
       <Version>2.0.78</Version>
     </PackageReference>
-    <PackageReference Include="EntityFramework">
-      <Version>6.4.4</Version>
-    </PackageReference>
-    <PackageReference Include="EntityFramework.ja">
-      <Version>6.2.0</Version>
-    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DailyReportModels\DailyReportModels.csproj">
@@ -81,6 +72,8 @@
       <Name>DailyReportModels</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Configuration\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
