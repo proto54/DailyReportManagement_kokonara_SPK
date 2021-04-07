@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Dapper;
 using static Dapper.SqlMapper;
 
@@ -144,20 +141,21 @@ namespace DBControlLibrary
         /// <param name="commandText">SQL ステートメントを指定します。</param>
         /// <param name="parameter">実行時のパラメーター オブジェクトを指定します。</param>
         /// <param name="commandType"><paramref name="commandText"/> の解釈方法を指定します。</param>
-        public void ExecuteTransaction(string commandText, object parameter = null, CommandType commandType = CommandType.Text)
+        public int ExecuteTransaction(string commandText, object parameter = null, CommandType commandType = CommandType.Text)
         {
             if (string.IsNullOrWhiteSpace(commandText))
             {
-                return;
+                return 0;
             }
 
+            int result = 0; 
             // トランザクション開始
             using (var transaction = this._Connection.BeginTransaction())
             {
                 try
                 {
                     // 実行
-                    var result = this._Connection.Execute(
+                    result = this._Connection.Execute(
                             commandText
                         , parameter
                         , transaction
@@ -172,8 +170,10 @@ namespace DBControlLibrary
                 {
                     // ロールバック
                     transaction.Rollback();
+                    throw new Exception(ex.Message);
                 }
             }
+            return result;
         }
 
         /// <summary>

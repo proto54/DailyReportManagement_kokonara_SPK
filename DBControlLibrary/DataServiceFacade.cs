@@ -30,8 +30,10 @@ namespace DBControlLibrary
         /// </summary>
         private DapperMapper _Connection;
 
+        /// <summary>
+        /// 固定時間テーブルを操作するインスタンスを保持します。
+        /// </summary>
         private SqlContextFixedTime _ContextFixedTime;
-        private EFContextFixedTime _EFContextFixedTime;
 
         /// <summary>
         /// 同期制御オブジェクト
@@ -76,7 +78,9 @@ namespace DBControlLibrary
 
             // 各インスタンスの初期化
             this._ContextFixedTime = new SqlContextFixedTime(_Connection);
-            this._EFContextFixedTime = new EFContextFixedTime();
+            // TODO:以下にテーブルを操作するインスタンスを初期化するコードを記述する
+
+
 
             this.IsInitialized = true;
         }
@@ -126,7 +130,11 @@ namespace DBControlLibrary
 
             try
             {
-                Lock(() => _EFContextFixedTime.Add(data.ToFixedTimeEntitie()));
+                int ret = 0;
+                Lock(() => ret = _ContextFixedTime.Add(data.ToFixedTimeEntitie()));
+
+                var msg = String.Format("{0}を{1}件追加しました。", nameof(FixedTimeModel), ret);
+                this.WriteLog(MethodBase.GetCurrentMethod(), msg);
             }
             catch (Exception ex)
             {
@@ -146,7 +154,7 @@ namespace DBControlLibrary
             try
             {
                 int ret = 0;
-                Lock(() => ret = _EFContextFixedTime.Add(datas.ToFixedTimeEntitie()));
+                Lock(() => ret = _ContextFixedTime.Add(datas.ToFixedTimeEntitie()));
 
                 var msg = String.Format("{0}を{1}件追加しました。", nameof(FixedTimeModel), ret);
                 this.WriteLog(MethodBase.GetCurrentMethod(), msg);
@@ -172,7 +180,7 @@ namespace DBControlLibrary
             try
             {
                 int ret = 0;
-                Lock(() => _EFContextFixedTime.Update(data.ToFixedTimeEntitie()));
+                Lock(() => _ContextFixedTime.Update(data.ToFixedTimeEntitie()));
 
                 var msg = String.Format("{0}を{1}件更新しました。", nameof(FixedTimeModel), ret);
                 this.WriteLog(MethodBase.GetCurrentMethod(), msg);
@@ -195,7 +203,7 @@ namespace DBControlLibrary
             try
             {
                 int ret = 0;
-                Lock(() => ret = _EFContextFixedTime.Update(datas.ToFixedTimeEntitie()));
+                Lock(() => ret = _ContextFixedTime.Update(datas.ToFixedTimeEntitie()));
 
                 var msg = String.Format("{0}を{1}件更新しました。", nameof(FixedTimeModel), ret);
                 this.WriteLog(MethodBase.GetCurrentMethod(), msg);
@@ -222,7 +230,6 @@ namespace DBControlLibrary
             {
                 this.Open();
 
-                //return _EFContextFixedTime.GetAll()
                 return _ContextFixedTime.GetAll()
                     .ToList()
                     .ToFixedTimeModel();
@@ -249,7 +256,7 @@ namespace DBControlLibrary
             try
             {
                 int ret = 0;
-                Lock(() => ret = _EFContextFixedTime.RemoveAt(id) );
+                Lock(() => ret = _ContextFixedTime.RemoveAt(id) );
 
                 var msg = String.Format("{0}を{1}件削除しました。", nameof(FixedTimeModel), ret);
                 this.WriteLog(MethodBase.GetCurrentMethod(), msg);
@@ -274,12 +281,20 @@ namespace DBControlLibrary
             {
                 try
                 {
+                    this.Open();
+
                     action();
+
                     return true;
                 }
-                catch
+                catch(Exception ex)
                 {
+                    this.WriteLog(MethodBase.GetCurrentMethod(), ex.Message);
                     return false;
+                }
+                finally
+                {
+                    this.Close();
                 }
             }
         }

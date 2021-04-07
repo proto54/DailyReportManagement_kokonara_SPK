@@ -9,6 +9,9 @@ using DBControlLibrary.Entities;
 namespace DBControlLibrary.Converters
 {
     using Utility;
+    /// <summary>
+    /// Mapper オブジェクトへのコンバーターメソッドを提供するクラスです。
+    /// </summary>
     public static class MapperConverters
     {
         /// <summary>

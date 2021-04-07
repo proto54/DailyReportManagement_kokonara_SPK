@@ -62,7 +62,6 @@ namespace DBControlLibrary.Context
                     values(@FixedTimeValue, @Name, @FixedNumber)
                 ";
 
-
             var result = this._Connection.Execute(query, data);
 
             return result;
@@ -98,7 +97,20 @@ namespace DBControlLibrary.Context
 
             // TODO:SQLクエリーを記載
             var query = @"
+                UPDATE
+                    dbo.FixedTimeEntities a
+                SET 
+                    a.FixedTimeValue = @FixedTimeValue
+                    a.Name = @Name
+                    a.FixedNumber = @FixedNumber
+                where 1 = 1
+                    a.Id = $Id
                 ";
+
+            // 実行
+            //result = this._Connection.Execute(query, data);
+            // トランザクション付きで実行
+            this._Connection.ExecuteTransaction(query, data);
 
             return result;
         }
@@ -112,9 +124,25 @@ namespace DBControlLibrary.Context
         {
             int result = 0;
 
-            // TODO:SQLクエリーを記載
-            var query = @"
+            datas.ForEach( x =>
+            {
+                // TODO:SQLクエリーを記載
+                var query = @"
+                UPDATE
+                    dbo.FixedTimeEntities
+                SET 
+                    FixedTimeValue = @FixedTimeValue
+                    , Name = @Name
+                    , FixedNumber = @FixedNumber
+                where
+                    Id = @Id
                 ";
+
+                // 実行
+                //result += this._Connection.Execute(query, x);
+                // トランザクション付きで実行
+                this._Connection.ExecuteTransaction(query, x);
+            });
 
             return result;
         }
@@ -129,8 +157,16 @@ namespace DBControlLibrary.Context
             int result = 0;
 
             // TODO:SQLクエリーを記載
-            var query = @"
+            var query = $@"
+                DELETE FROM
+                    dbo.FixedTimeEntities a
+                where 1 = 1
+                    a.Id = $Id
                 ";
+
+            result = this._Connection.Execute(query);
+            // トランザクション付きで実行
+            this._Connection.ExecuteTransaction(query);
 
             return result;
         }
@@ -149,6 +185,7 @@ namespace DBControlLibrary.Context
                 ";
 
             var result = this._Connection.Execute(query);
+
             return result;
         }
     }

@@ -46,6 +46,14 @@ namespace DBControlLibrary.Core
         int Execute(string commandText, object parameter = null, CommandType commandType = CommandType.Text);
 
         /// <summary>
+        /// 指定した SQL ステートメントをトランザクション付きで実行して、その結果を取得します。
+        /// </summary>
+        /// <param name="commandText"></param>
+        /// <param name="parameter"></param>
+        /// <param name="commandType"></param>
+        int ExecuteTransaction(string commandText, object parameter = null, CommandType commandType = CommandType.Text);
+
+        /// <summary>
         /// 指定した SQL ステートメントを実行して、その結果を取得します。
         /// </summary>
         /// <typeparam name="T">エンティティの型を指定します。</typeparam>
