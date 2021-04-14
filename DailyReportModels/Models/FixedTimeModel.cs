@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,6 +13,11 @@ namespace DailyReportModels.Models
     /// </summary>
     public sealed class FixedTimeModel
     {
+        /// <summary>
+        /// 編集したかどうかを保持します。
+        /// </summary>
+        public bool HasEdit;
+
         /// <summary>
         /// ID
         /// </summary>
@@ -24,11 +31,12 @@ namespace DailyReportModels.Models
         /// <summary>
         /// 名称
         /// </summary>
-        public string Name { set; get; }
+        public string Name { set; get; } = string.Empty;
 
         /// <summary>
         /// 固定番号
         /// </summary>
         public int FixedNumber { set; get; }
+
     }
 }

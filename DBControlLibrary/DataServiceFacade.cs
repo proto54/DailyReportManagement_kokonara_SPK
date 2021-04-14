@@ -33,7 +33,7 @@ namespace DBControlLibrary
         /// <summary>
         /// 固定時間テーブルを操作するインスタンスを保持します。
         /// </summary>
-        private SqlContextFixedTime _ContextFixedTime;
+        private ContextFixedTime _ContextFixedTime;
 
         /// <summary>
         /// 同期制御オブジェクト
@@ -77,7 +77,7 @@ namespace DBControlLibrary
             _Connection = new DapperMapper(conection);
 
             // 各インスタンスの初期化
-            this._ContextFixedTime = new SqlContextFixedTime(_Connection);
+            this._ContextFixedTime = new ContextFixedTime(_Connection);
             // TODO:以下にテーブルを操作するインスタンスを初期化するコードを記述する
 
 
@@ -290,7 +290,8 @@ namespace DBControlLibrary
                 catch(Exception ex)
                 {
                     this.WriteLog(MethodBase.GetCurrentMethod(), ex.Message);
-                    return false;
+                    throw;
+                    //return false;
                 }
                 finally
                 {

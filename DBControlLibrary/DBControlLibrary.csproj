@@ -47,7 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Context\SqlContextFixedTime.cs" />
+    <Compile Include="Context\ContextFixedTime.cs" />
     <Compile Include="Converters\MapperConverters.cs" />
     <Compile Include="Core\IDbMapper.cs" />
     <Compile Include="Dapper\IDapper.cs" />
@@ -72,8 +72,6 @@
       <Name>DailyReportModels</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Configuration\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

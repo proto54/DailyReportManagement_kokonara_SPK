@@ -15,17 +15,17 @@ namespace DBControlLibrary
     /// </summary>
     public sealed class DapperMapper : IDapperMapper
     {
- 
+        #region "フィールド"
         /// <summary>
         /// データソースへ接続するオブジェクトを取得します。
         /// </summary>
         private readonly IDbConnection _Connection = null;
-        
+
         /// <summary>
         /// データソースで実行するトランザクションを表します。
         /// </summary>
         private IDbTransaction _Transaction = null;
-        
+
         /// <summary>
         /// コマンドを実行する試みを終了してエラーが生成されるまでの待機時間 (秒) を表します。
         /// <para>
@@ -33,6 +33,7 @@ namespace DBControlLibrary
         /// </para>
         /// </summary>
         private int _CommandTimeout = 30;
+        #endregion "フィールド"
 
         #region "プロパティ"
         /// <summary>
@@ -70,6 +71,7 @@ namespace DBControlLibrary
         }
         #endregion "Dispose"
 
+        #region "メソッド"
         /// <summary>
         /// データベース接続を開きます。
         /// </summary>
@@ -200,6 +202,6 @@ namespace DBControlLibrary
             );
             return result;
         }
-
+        #endregion "メソッド"
     }
 }

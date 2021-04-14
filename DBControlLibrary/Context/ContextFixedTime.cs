@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Configuration;
-using System.Data.SqlClient;
 using DBControlLibrary.Entities;
 
 namespace DBControlLibrary.Context
@@ -11,21 +10,27 @@ namespace DBControlLibrary.Context
     using Utility;
 
     /// <summary>
-    /// SqlClientを使った[固定時間テーブル]を操作する機能を提供します。
+    /// Sqlを使った[固定時間テーブル]を操作する機能を提供します。
     /// </summary>
 
-    public sealed class SqlContextFixedTime
+    public sealed class ContextFixedTime
     {
+        #region "フィールド"
         /// <summary>
         /// DBを操作するオブジェクトを保持します。
         /// </summary>
         private readonly IDapperMapper _Connection = null;
+        #endregion "フィールド"
 
+        #region "プロパティ"
+        #endregion "プロパティ"
+
+        #region "メソッド"
         /// <summary>
         /// コンストラクタ
         /// </summary>
         /// <param name="connection"></param>
-        public SqlContextFixedTime(DapperMapper connection)
+        public ContextFixedTime(DapperMapper connection)
         {
             _Connection = connection ?? throw new ArgumentNullException(nameof(connection));
         }
@@ -110,7 +115,7 @@ namespace DBControlLibrary.Context
             // 実行
             //result = this._Connection.Execute(query, data);
             // トランザクション付きで実行
-            this._Connection.ExecuteTransaction(query, data);
+            result += this._Connection.ExecuteTransaction(query, data);
 
             return result;
         }
@@ -141,7 +146,7 @@ namespace DBControlLibrary.Context
                 // 実行
                 //result += this._Connection.Execute(query, x);
                 // トランザクション付きで実行
-                this._Connection.ExecuteTransaction(query, x);
+                result += this._Connection.ExecuteTransaction(query, x);
             });
 
             return result;
@@ -159,14 +164,15 @@ namespace DBControlLibrary.Context
             // TODO:SQLクエリーを記載
             var query = $@"
                 DELETE FROM
-                    dbo.FixedTimeEntities a
-                where 1 = 1
-                    a.Id = $Id
+                    dbo.FixedTimeEntities
+                where
+                    Id = @Id
                 ";
 
-            result = this._Connection.Execute(query);
+            // 実行
+            //result = this._Connection.Execute(query, new { Id = id});
             // トランザクション付きで実行
-            this._Connection.ExecuteTransaction(query);
+            result = this._Connection.ExecuteTransaction(query, new { Id = id });
 
             return result;
         }
@@ -188,5 +194,6 @@ namespace DBControlLibrary.Context
 
             return result;
         }
+        #endregion "メソッド"
     }
 }

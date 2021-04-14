@@ -11,5 +11,13 @@ namespace DBControlLibrary.Dapper
     /// </summary>
     public interface IDapperMapper : Core.IDbMapper
     {
+        #region "フィールド"
+        #endregion "フィールド"
+
+        #region "プロパティ"
+        #endregion "プロパティ"
+
+        #region "メソッド"
+        #endregion "メソッド"
     }
 }
