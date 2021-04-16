@@ -62,16 +62,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Dapper">
-      <Version>2.0.78</Version>
-    </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\DailyReportModels\DailyReportModels.csproj">
       <Project>{1f26163d-bfd8-4c9d-95ca-cabf87b28e25}</Project>
       <Name>DailyReportModels</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <PackageReference Include="Dapper">
+      <Version>2.0.78</Version>
+    </PackageReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
